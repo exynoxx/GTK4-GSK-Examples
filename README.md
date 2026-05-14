@@ -9,7 +9,7 @@ project with its own `meson.build`.
 
 ```sh
 sudo apt install build-essential meson ninja-build valac libgtk-4-dev \
-    libgtk4-layer-shell-dev gjs \
+    libgtk4-layer-shell-dev gjs python3-gi gir1.2-gtk-4.0 \
     gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-libav
 ```
 
@@ -17,7 +17,8 @@ sudo apt install build-essential meson ninja-build valac libgtk-4-dev \
 
 ```sh
 sudo dnf install gcc meson ninja-build vala gtk4-devel gtk4-layer-shell-devel \
-    gjs gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-libav
+    gjs python3-gobject \
+    gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-libav
 ```
 
 ## Build & run
@@ -29,11 +30,11 @@ meson compile -C build
 ./build/gsk-demo
 ```
 
-The GJS demo needs no build step:
+The GJS and Python demos need no build step:
 
 ```sh
-cd 05-gjs
-gjs -m main.js
+cd 05-gjs            && gjs -m main.js
+cd 08-python-attractor && python3 main.py
 ```
 
 ## Demos
@@ -47,3 +48,5 @@ gjs -m main.js
 | `05-gjs` | JavaScript (GJS) | Port of `01-initial` to GJS, included as a reference for the GJS-vs-Vala API differences. |
 | `06-kinetic` | Vala | Motion showcase: rotating conic sky (GTK ≥ 4.14). |
 | `07-layer-notifications` | Vala | Notification banners painted with GSK nodes on a `gtk4-layer-shell` surface (Wayland only). Run once to start, then `./fire-notification.sh "Title" "Body"` to push more. |
+| `08-python-attractor` | Python (PyGObject) | Aizawa strange attractor in python. |
+| `09-ecosystem` | Vala | Pulling content from across the stack: `Gio.AppInfo` for installed apps, `Gtk.IconTheme` + `Gdk.Paintable` for icons, `Pango.Layout` for all text, `Gdk.Monitor`, `Gio.NetworkMonitor`, `GLib.DateTime` / `GLib.Environment`. Hover scales cards, click launches the app. |
