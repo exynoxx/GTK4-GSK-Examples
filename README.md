@@ -8,15 +8,16 @@ project with its own `meson.build`.
 ### Ubuntu / Debian
 
 ```sh
-sudo apt install build-essential meson ninja-build valac libgtk-4-dev gjs \
+sudo apt install build-essential meson ninja-build valac libgtk-4-dev \
+    libgtk4-layer-shell-dev gjs \
     gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-libav
 ```
 
 ### Fedora
 
 ```sh
-sudo dnf install gcc meson ninja-build vala gtk4-devel gjs \
-    gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-libav
+sudo dnf install gcc meson ninja-build vala gtk4-devel gtk4-layer-shell-devel \
+    gjs gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-libav
 ```
 
 ## Build & run
@@ -45,3 +46,4 @@ gjs -m main.js
 | `04-mixed` | Vala | Mixing stock GTK widgets with custom GSK-drawn widgets in the same window. |
 | `05-gjs` | JavaScript (GJS) | Port of `01-initial` to GJS, included as a reference for the GJS-vs-Vala API differences. |
 | `06-kinetic` | Vala | Motion showcase: rotating conic sky (GTK ≥ 4.14). |
+| `07-layer-notifications` | Vala | Notification banners painted with GSK nodes on a `gtk4-layer-shell` surface (Wayland only). Run once to start, then `./fire-notification.sh "Title" "Body"` to push more. |
